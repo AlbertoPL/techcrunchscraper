@@ -16,7 +16,7 @@ def writeToCsv(articleResults):
 def getArticleInfo(articleUrl):
 		"""Gets the article's title, URL, and if applicable, the subject company's name and
 		website URL. Note that this function will only work for www.techcrunch.com as of 2/15/2017.
-		Returns [companyName, website, title, articleUrl]
+		Returns [title, articleUrl, companyName, website]
     """
 		article = requests.get(articleUrl)
 		articleTree = html.fromstring(article.content)
@@ -43,7 +43,7 @@ def getArticleInfo(articleUrl):
 						if companyName:
 								companyName = companyName[0].strip()
 		
-		return [companyName, website, title.encode('utf-8'), articleUrl]
+		return [title.encode('utf-8'), articleUrl, companyName, website]
 
 def getArticleUrls(websiteUrl, xpathsToArticleLinks):
 		"""Gets all article URLs from the websiteUrl's first page by using the list of XPaths 
