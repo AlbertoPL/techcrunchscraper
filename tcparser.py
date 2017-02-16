@@ -11,7 +11,7 @@ def writeToCsv(articleResults):
 				writer = csv.writer(csvfile, escapechar='"', quoting=csv.QUOTE_MINIMAL)
 
 				for row in articleResults:
-						writer.writerow([unicode(s).encode("utf-8") for s in row])
+						writer.writerow(row)
 
 def getArticleInfo(articleUrl):
 		"""Gets the article's title, URL, and if applicable, the subject company's name and
